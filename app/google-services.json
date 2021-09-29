@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "994617777637",
+    "firebase_url": "https://teste-aula-e88b7-default-rtdb.firebaseio.com",
+    "project_id": "teste-aula-e88b7",
+    "storage_bucket": "teste-aula-e88b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994617777637:android:5ce5aaabe2e03cfbd9230c",
+        "android_client_info": {
+          "package_name": "com.appgjob.testeaula"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994617777637-2p9niinke5u0icf2mv4vaf356h6fptuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appgjob.testeaula",
+            "certificate_hash": "be774c336fb0cb8cf22ecaca346eb615bb1f6893"
+          }
+        },
+        {
+          "client_id": "994617777637-ihj19tgsdpdgs6iba6immoog2to4l76d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4foRJUeuNj6F68qAuFQ_nSgTBiOHWHoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994617777637-ihj19tgsdpdgs6iba6immoog2to4l76d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
