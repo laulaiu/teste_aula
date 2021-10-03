@@ -35,9 +35,11 @@ public class Jogo extends AppCompatActivity {
 
         resposta1.setText("ola, mundo");
 
-        /*lista_frases = fb.getLista();
-        resposta1.setText(lista_frases.get(0).getResposta1());
-        resposta2.setText(lista_frases.get(0).getResposta2());
+        lista_frases = fb.getLista();
+
+        //resposta1.setText((String) lista_frases.get(0).getResposta1());
+
+        /*resposta2.setText(lista_frases.get(0).getResposta2());
         resposta3.setText(lista_frases.get(0).getResposta3());
         resposta4.setText(lista_frases.get(0).getResposta4());
         orientacao.setText(lista_frases.get(0).getOrientação());*/
@@ -47,7 +49,6 @@ public class Jogo extends AppCompatActivity {
         //pergunta.setText(prg);
         //Log.d("MSG: ",lista_frases.get("QuhKteeCGVZPh0a0UIRu").toString());
         //resposta1.setText((CharSequence) );
-
 
     }
 
