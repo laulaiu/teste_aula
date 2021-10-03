@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
     public void onClickListar(View view){
         Intent listar_tela = new Intent(MainActivity.this , Listar.class);
         startActivity(listar_tela);
+    }
+
+    public void onClickJogo(View view){
+        Intent jogo = new Intent(MainActivity.this , Jogo.class);
+        startActivity(jogo);
 
     }
 

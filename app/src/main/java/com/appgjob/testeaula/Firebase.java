@@ -1,56 +1,34 @@
 package com.appgjob.testeaula;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
+public class Firebase {
 
-public class Listar extends AppCompatActivity {
+    public List<Frases> lista_frases;
 
-
-
-    private ListView listaV;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar);
-        listaV = findViewById(R.id.lista);
-
-        listaV = findViewById(R.id.lista);
-
-    }
-    //teste
-
-    public void onClickListar(View view){
+    public List<Frases> getLista(){
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("nivel_1")
-                .get()
+        db.collection("nivel_1").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        List<Frases> lista = new ArrayList<Frases>();
                         if(task.isSuccessful()){
-                            List<Frases> lista = new ArrayList<Frases>();
-
                             for(QueryDocumentSnapshot doc : task.getResult()){
                                 Frases p = new Frases(
                                         doc.get("Orientação").toString(),
@@ -62,22 +40,17 @@ public class Listar extends AppCompatActivity {
                                 );
                                 lista.add(p);
                             }
-                            lista.remove(0);
-                            ArrayAdapter<Frases> adapter = new ArrayAdapter<>(
+                            /*ArrayAdapter<Frases> adapter = new ArrayAdapter<>(
                                     Listar.this,
-                                    android.R.layout.simple_list_item_1, lista);
-
-                            listaV.setAdapter(adapter);
+                                    android.R.layout.simple_list_item_1, lista);*/
+                            //listaV.setAdapter(adapter);
+                            lista_frases = lista;
                         }else{
-                            Toast.makeText(Listar.this, "Erro ao resgatar", Toast.LENGTH_SHORT).show();
+                            lista_frases = null;
                         }
                     }
                 });
-
-
+        return this.lista_frases;
     }
 
-    public void onClickVoltar(View view){
-        finish();
-    }
 }
