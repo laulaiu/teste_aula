@@ -14,20 +14,24 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Firebase {
+public class FirebaseBD {
 
-    public  List<Frases> lista = new ArrayList<Frases>();
-    public String tamanho;
 
-    public List<Frases> getLista(){
+
+    List<Frases> lista_retorno = new ArrayList<>();
+
+    public List<Frases> getLista() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("nivel_1").get()
+        db.collection("nivel_1")
+                .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
+                            List<Frases> lista = new ArrayList<Frases>();
+
                             for(QueryDocumentSnapshot doc : task.getResult()){
                                 Frases p = new Frases(
                                         doc.get("pergunta").toString(),
@@ -38,17 +42,16 @@ public class Firebase {
                                         doc.get("Orientação").toString()
                                 );
                                 lista.add(p);
+                                lista_retorno.add(p) ;
                             }
-                            tamanho = lista.size()+"";
+
+                        }else{
+
                         }
                     }
                 });
 
-        return lista;
-    }
-
-    public String getTamanho(){
-        return tamanho;
+        return this.lista_retorno;
     }
 
 }

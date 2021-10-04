@@ -7,16 +7,16 @@ public class Frases {
     public String resposta2;
     public String resposta3;
     public String resposta4;
-    public String orientação;
+    public String orientacao;
 
 
-    public Frases(String pergunta, String resposta1, String resposta2, String resposta3, String resposta4, String orientação) {
+    public Frases(String pergunta, String resposta1, String resposta2, String resposta3, String resposta4, String orientacao) {
         this.pergunta = pergunta;
         this.resposta1 = resposta1;
         this.resposta2 = resposta2;
         this.resposta3 = resposta3;
         this.resposta4 = resposta4;
-        this.orientação = orientação;
+        this.orientacao = orientacao;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Frases {
         return resposta4;
     }
 
-    public String getOrientação() {
-        return orientação;
+    public String getOrientacao() {
+        return orientacao;
     }
 }

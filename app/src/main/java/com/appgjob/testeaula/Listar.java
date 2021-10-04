@@ -26,7 +26,7 @@ import java.util.List;
 public class Listar extends AppCompatActivity {
 
 
-
+    private List<String> lista2 = new ArrayList<>();
     private ListView listaV;
     private TextView tamanho;
 
@@ -38,6 +38,12 @@ public class Listar extends AppCompatActivity {
 
         listaV = findViewById(R.id.lista);
         tamanho = findViewById(R.id.tv_tamanho);
+
+        lista2.add("AAAAAAAAAAAAAAAAA");
+        lista2.add("BBBBBBBBBBBBBBBBB");
+        lista2.add("CCCCCCCCCCCCCCCCC");
+        lista2.add("DDDDDDDDDDDDDDDDD");
+        lista2.add("1242555555555555");
 
     }
     //teste
@@ -65,7 +71,7 @@ public class Listar extends AppCompatActivity {
                                 );
                                 lista.add(p);
                             }
-                            tamanho.setText(lista.size()+"");
+                            tamanho.setText(lista2.get(2)+"");
                             ArrayAdapter<Frases> adapter = new ArrayAdapter<>(
                                     Listar.this,
                                     android.R.layout.simple_list_item_1, lista);
