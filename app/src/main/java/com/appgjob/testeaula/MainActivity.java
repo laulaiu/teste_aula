@@ -72,4 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onClickTelaInicioModo(View view){
+        Intent telaInicioModo = new Intent(MainActivity.this , TelaInicioModo.class);
+        startActivity(telaInicioModo);
+
+    }
+
 }

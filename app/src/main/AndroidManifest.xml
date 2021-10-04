@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TesteAula">
         <activity
+            android:name=".TelaInicioModo"
+            android:exported="true" />
+        <activity
             android:name=".Jogo"
             android:exported="true" />
         <activity

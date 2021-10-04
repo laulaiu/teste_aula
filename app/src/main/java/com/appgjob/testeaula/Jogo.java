@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Jogo extends AppCompatActivity {
 
-    public List<Frases> lista_frases;
+
 
     private TextView pergunta;
     private TextView orientacao;
@@ -32,22 +32,19 @@ public class Jogo extends AppCompatActivity {
         resposta4 = findViewById(R.id.resposta4);
 
         Firebase fb = new Firebase();
-
-        resposta1.setText("ola, mundo");
-
+        List<Frases> lista_frases ;
         lista_frases = fb.getLista();
 
-        //resposta1.setText((String) lista_frases.get(0).getResposta1());
-
-        /*resposta2.setText(lista_frases.get(0).getResposta2());
+        /*resposta1.setText( lista_frases.get(0).getResposta1());
+        resposta2.setText(lista_frases.get(0).getResposta2());
         resposta3.setText(lista_frases.get(0).getResposta3());
         resposta4.setText(lista_frases.get(0).getResposta4());
         orientacao.setText(lista_frases.get(0).getOrientação());*/
 
-        //String prg = lista_frases.get(0).getPergunta() +"";
-
+        int prg = lista_frases.size();
         //pergunta.setText(prg);
-        //Log.d("MSG: ",lista_frases.get("QuhKteeCGVZPh0a0UIRu").toString());
+
+        Log.d("MSG: ", prg+">>"+lista_frases);
         //resposta1.setText((CharSequence) );
 
     }

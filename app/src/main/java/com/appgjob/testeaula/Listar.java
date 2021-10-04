@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ public class Listar extends AppCompatActivity {
 
 
     private ListView listaV;
+    private TextView tamanho;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class Listar extends AppCompatActivity {
         listaV = findViewById(R.id.lista);
 
         listaV = findViewById(R.id.lista);
+        tamanho = findViewById(R.id.tv_tamanho);
 
     }
     //teste
@@ -62,7 +65,7 @@ public class Listar extends AppCompatActivity {
                                 );
                                 lista.add(p);
                             }
-                            lista.remove(0);
+                            tamanho.setText(lista.size()+"");
                             ArrayAdapter<Frases> adapter = new ArrayAdapter<>(
                                     Listar.this,
                                     android.R.layout.simple_list_item_1, lista);
@@ -73,7 +76,6 @@ public class Listar extends AppCompatActivity {
                         }
                     }
                 });
-
 
     }
 
