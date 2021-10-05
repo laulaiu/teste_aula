@@ -41,6 +41,7 @@ public class FirebaseBD {
                                         doc.get("resposta_4").toString(),
                                         doc.get("Orientação").toString()
                                 );
+                                
                                 lista.add(p);
                                 lista_retorno.add(p) ;
                             }

@@ -27,7 +27,8 @@ public class Frases {
                 "\n\rResposta-3: " + resposta3 +
                 "\n\rResposta-4: " + resposta4 ;
     }
-//teste
+
+
     public String getPergunta() {
         return pergunta;
     }
