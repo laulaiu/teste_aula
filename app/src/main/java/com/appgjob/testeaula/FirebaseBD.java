@@ -34,6 +34,7 @@ public class FirebaseBD {
 
                             for(QueryDocumentSnapshot doc : task.getResult()){
                                 Frases p = new Frases(
+
                                         doc.get("pergunta").toString(),
                                         doc.get("resposta_1").toString(),
                                         doc.get("resposta_2").toString(),
@@ -43,6 +44,7 @@ public class FirebaseBD {
                                 );
                                 lista.add(p);
                             }
+                            lista_retorno = lista;
 
 
                         }else{

@@ -22,6 +22,13 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+//Leonardo: Conexão com o banco Firebase, Get os dados do banco, e insere na tela
+//de formulario, timer onde faz a contagem regresiva caso o tempo chegue ao seu limite
+// o jogador ira perder ponto.
+// Pontos com contagem de 10 em 10 criei uma função onde ira calcular todos os pontos do
+//jogadores.
+
 public class Jogo extends AppCompatActivity implements Serializable {
 
     private long intervalo = 1000;
@@ -50,7 +57,17 @@ public class Jogo extends AppCompatActivity implements Serializable {
 
 
         funcao();
-        getFormulario();
+        FirebaseBD fb = new FirebaseBD();
+        List<Frases> lista = fb.lista_retorno;
+
+        pergunta.setText(lista.get(controlador).getPergunta());
+        resposta1.setText(lista.get(controlador).getResposta1());
+        resposta2.setText(lista.get(controlador).getResposta2());
+        resposta3.setText(lista.get(controlador).getResposta3());
+        resposta4.setText(lista.get(controlador).getResposta4());
+        orientacao = lista.get(controlador).getOrientacao();
+
+        //getFormulario();
 
     }
 
