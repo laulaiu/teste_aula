@@ -1,5 +1,6 @@
 package com.appgjob.testeaula;
 
+import android.content.Intent;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -11,19 +12,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FirebaseBD {
 
 
+    public List<Frases> lista_retorno ;
+    public int tamanho;
 
-    List<Frases> lista_retorno = new ArrayList<>();
-
-    public List<Frases> getLista() {
-
+    public void processaLista() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         db.collection("nivel_1")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -41,18 +41,20 @@ public class FirebaseBD {
                                         doc.get("resposta_4").toString(),
                                         doc.get("Orientação").toString()
                                 );
-                                
                                 lista.add(p);
-                                lista_retorno.add(p) ;
                             }
+
 
                         }else{
 
                         }
+
                     }
                 });
-
-        return this.lista_retorno;
     }
+
+
+
+
 
 }

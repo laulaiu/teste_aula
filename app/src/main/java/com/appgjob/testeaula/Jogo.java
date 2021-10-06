@@ -15,13 +15,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Jogo extends AppCompatActivity  {
+public class Jogo extends AppCompatActivity implements Serializable {
 
     private long intervalo = 1000;
     private int controlador = 0;
@@ -39,6 +40,7 @@ public class Jogo extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo);
 
+
         tempo = findViewById(R.id.tempo);
         pergunta = findViewById(R.id.tv_pergunta);
         resposta1 = findViewById(R.id.resposta1);
@@ -46,32 +48,28 @@ public class Jogo extends AppCompatActivity  {
         resposta3 = findViewById(R.id.resposta3);
         resposta4 = findViewById(R.id.resposta4);
 
-        funcao();
 
+        funcao();
         getFormulario();
 
     }
 
+
     public void funcao () {
         System.out.println("inicio");
         Timer timer = null;
-
         if (timer == null) {
-
             timer = new Timer();
-
             TimerTask tarefa = new TimerTask() {
                 public void run() {
                     try {
                         tempo.setText(segundos+"");
                         segundos += 1;
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             };
-
             timer.scheduleAtFixedRate(tarefa, intervalo, intervalo);
         }
     }
@@ -80,48 +78,18 @@ public class Jogo extends AppCompatActivity  {
 
     public void getFormulario() {
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-            db.collection("nivel_1")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()){
-                                List<Frases> lista = new ArrayList<Frases>();
+        List<Frases> lista  = (List<Frases>) getIntent().getExtras().getSerializable("formulario");
 
-                                for(QueryDocumentSnapshot doc : task.getResult()){
-                                    Frases p = new Frases(
-                                            doc.get("pergunta").toString(),
-                                            doc.get("resposta_1").toString(),
-                                            doc.get("resposta_2").toString(),
-                                            doc.get("resposta_3").toString(),
-                                            doc.get("resposta_4").toString(),
-                                            doc.get("Orientação").toString()
-                                    );
-                                    lista.add(p);
-                                }
-
-                                try{
-                                    pergunta.setText(lista.get(controlador).getPergunta());
-                                    resposta1.setText(lista.get(controlador).getResposta1());
-                                    resposta2.setText(lista.get(controlador).getResposta2());
-                                    resposta3.setText(lista.get(controlador).getResposta3());
-                                    resposta4.setText(lista.get(controlador).getResposta4());
-                                    orientacao = lista.get(controlador).getOrientacao();
-
-                                }catch (Exception ae){
-                                    Toast.makeText(Jogo.this, "Erro na conexão: "+ae, Toast.LENGTH_SHORT).show();
-                                }
-
-                            }else{
-                                Toast.makeText(Jogo.this, "Erro na conexão!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+        Toast.makeText(Jogo.this, "A:"+lista.size(), Toast.LENGTH_SHORT).show();
 
 
-
+        pergunta.setText(lista.get(controlador).getPergunta());
+        resposta1.setText(lista.get(controlador).getResposta1());
+        resposta2.setText(lista.get(controlador).getResposta2());
+        resposta3.setText(lista.get(controlador).getResposta3());
+        resposta4.setText(lista.get(controlador).getResposta4());
+        orientacao = lista.get(controlador).getOrientacao();
     }
 
 

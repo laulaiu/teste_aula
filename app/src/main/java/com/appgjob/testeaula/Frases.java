@@ -1,6 +1,8 @@
 package com.appgjob.testeaula;
 
-public class Frases {
+import java.io.Serializable;
+
+public class Frases implements Serializable  {
 
     public String pergunta;
     public String resposta1;
